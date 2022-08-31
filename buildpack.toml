@@ -19,7 +19,7 @@ api = "0.7"
   homepage = "https://github.com/paketo-buildpacks/aternity"
   id = "paketo-buildpacks/aternity"
   keywords = ["riverbed", "aternity", "agent", "apm", "java"]
-  name = "Paketo Aternity Buildpack"
+  name = "Paketo Buildpack for Aternity"
   sbom-formats = ["application/vnd.syft+json", "application/vnd.cyclonedx+json"]
   version = "{{.version}}"
 
