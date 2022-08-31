@@ -1,5 +1,5 @@
 # `docker.io/paketobuildpacks/aternity`
-The Paketo Aternity Buildpack is a Cloud Native Buildpack that contributes the [AppInternals][a] Agent and configures it to connect to the service.
+The Paketo Buildpack for Aternity is a Cloud Native Buildpack that contributes the [AppInternals][a] Agent and configures it to connect to the service.
 
 [a]: https://www.riverbed.com/products/steelcentral/steelcentral-appinternals.html
 
