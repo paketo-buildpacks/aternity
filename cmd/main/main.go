@@ -26,8 +26,9 @@ import (
 )
 
 func main() {
+	logger := bard.NewLogger(os.Stdout)
 	libpak.Main(
-		appint.Detect{},
-		appint.Build{Logger: bard.NewLogger(os.Stdout)},
+		appint.Detect{Logger: logger},
+		appint.Build{Logger: logger},
 	)
 }
