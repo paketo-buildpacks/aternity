@@ -1,4 +1,4 @@
-# Copyright 2018-2022 the original author or authors.
+# Copyright 2018-2024 the original author or authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ api = "0.7"
     uri = "https://github.com/paketo-buildpacks/aternity/blob/main/LICENSE"
 
 [metadata]
-  include-files = ["LICENSE", "NOTICE", "README.md", "bin/build", "bin/detect", "bin/helper", "bin/main", "buildpack.toml"]
+  include-files = ["LICENSE", "NOTICE", "README.md", "linux/amd64/bin/build", "linux/amd64/bin/detect", "linux/amd64/bin/main", "linux/amd64/bin/helper", "linux/arm64/bin/build", "linux/arm64/bin/detect", "linux/arm64/bin/main", "linux/arm64/bin/helper", "buildpack.toml"]
   pre-package = "scripts/build.sh"
 
   [[metadata.dependencies]]
@@ -37,7 +37,7 @@ api = "0.7"
     name = "Aternity AppInternals Java Agent"
     purl = "pkg:generic/aternity-appinternals-java-agent@11.8.5?arch=amd64"
     sha256 = "8242054c1828196a5605ac8225f2fdf3a947931c3e4db6e2e4b26df70bbaffe0"
-    stacks = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
+    stacks = ["*"]
     uri = "https://pcf-instrumentation-download.steelcentral.net/riverbed-appinternals-agent-11.8.5_BL527.zip"
     version = "11.8.5"
 
@@ -45,10 +45,12 @@ api = "0.7"
       uri = "https://www.riverbed.com/document/legal/riverbed-end-user-license-agreement.pdf"
 
 [[stacks]]
-  id = "io.buildpacks.stacks.bionic"
-
-[[stacks]]
-  id = "io.paketo.stacks.tiny"
-
-[[stacks]]
   id = "*"
+
+[[targets]]
+  arch = "amd64"
+  os = "linux"
+
+[[targets]]
+  arch = "arm64"
+  os = "linux"
