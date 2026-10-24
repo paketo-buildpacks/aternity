@@ -28,11 +28,12 @@ api = "0.7"
     uri = "https://github.com/paketo-buildpacks/aternity/blob/main/LICENSE"
 
 [metadata]
-  include-files = ["LICENSE", "NOTICE", "README.md", "linux/amd64/bin/build", "linux/amd64/bin/detect", "linux/amd64/bin/main", "linux/amd64/bin/helper", "linux/arm64/bin/build", "linux/arm64/bin/detect", "linux/arm64/bin/main", "linux/arm64/bin/helper", "buildpack.toml"]
-  pre-package = "scripts/build.sh"
+  include-files = ["LICENSE", "NOTICE", "README.md", "linux/amd64/bin/build", "linux/amd64/bin/detect", "linux/amd64/bin/run", "linux/amd64/bin/helper", "linux/arm64/bin/build", "linux/arm64/bin/detect", "linux/arm64/bin/run", "linux/arm64/bin/helper", "buildpack.toml"]
+  pre-package = "scripts/build.sh --target linux/amd64 --target linux/arm64"
 
   [[metadata.dependencies]]
-    cpes = ["cpe:2.3:a:aternity:steelcentral_appinternals:11.8.5:*:*:*:*:*:*:*"]
+    checksum = "sha256:8242054c1828196a5605ac8225f2fdf3a947931c3e4db6e2e4b26df70bbaffe0"
+    cpe = "cpe:2.3:a:aternity:steelcentral_appinternals:11.8.5:*:*:*:*:*:*:*"
     id = "appinternals-java"
     name = "Aternity AppInternals Java Agent"
     purl = "pkg:generic/aternity-appinternals-java-agent@11.8.5?arch=amd64"
@@ -43,6 +44,11 @@ api = "0.7"
 
     [[metadata.dependencies.licenses]]
       uri = "https://www.riverbed.com/document/legal/riverbed-end-user-license-agreement.pdf"
+
+  [[metadata.dependency-constraints]]
+    constraint = "11.*"
+    id = "appinternals-java"
+    patches = 2
 
 [[stacks]]
   id = "*"

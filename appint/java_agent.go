@@ -32,8 +32,8 @@ type JavaAgent struct {
 	Logger           bard.Logger
 }
 
-func NewJavaAgent(dependency libpak.BuildpackDependency, cache libpak.DependencyCache) (JavaAgent, libcnb.BOMEntry) {
-	contributor, entry := libpak.NewDependencyLayer(dependency, cache, libcnb.LayerTypes{
+func NewJavaAgent(dependency libpak.BuildpackDependency, cache libpak.DependencyCache) (JavaAgent, libcnb.BOMEntry) { //nolint:staticcheck // hold off on the BOM migration for now
+	contributor, entry := libpak.NewDependencyLayer(dependency, cache, libcnb.LayerTypes{ //nolint:staticcheck // hold off on the BOM migration for now
 		Launch: true,
 	})
 	return JavaAgent{LayerContributor: contributor}, entry
@@ -45,7 +45,7 @@ func (j JavaAgent) Contribute(layer libcnb.Layer) (libcnb.Layer, error) {
 	return j.LayerContributor.Contribute(layer, func(artifact *os.File) (libcnb.Layer, error) {
 		j.Logger.Bodyf("Expanding to %s", layer.Path)
 
-		if err := crush.ExtractZip(artifact, layer.Path, 1); err != nil {
+		if err := crush.Extract(artifact, layer.Path, 1); err != nil { //nolint:staticcheck // hold off on the BOM migration for now
 			return libcnb.Layer{}, fmt.Errorf("unable to expand AppInternals\n%w", err)
 		}
 
